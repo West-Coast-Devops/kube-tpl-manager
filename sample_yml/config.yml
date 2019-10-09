@@ -1,0 +1,22 @@
+---
+defaults:
+  name: my-application
+  cluster: sites-cluster
+  zone: us-central1-a
+  replace:
+    "[DEPLOYMENT_NAME]": ["%name"]
+    "[DEPLOYMENT_LABEL]": ["%name"]
+    "[NAMESPACE]": ["%namespace"]
+    "[DOCKER_IMAGE]": ["repo/image:", "$CI_BRANCH", ".", "$CI_TIMESTAMP"]
+    "[BUST]": ["$CI_TIMESTAMP"]
+    "[REQUEST_CPU]": "100m"
+    "[NODE_SELECTOR]": ["user.io/namespace: ", "%namespace"]
+    "[ROLLOUT_NOTE]": ["$CI_COMMITTER", "(", "$CI_COMMIT", "): ", "$CI_COMMIT_MESSAGE"]
+  status:
+    - deployment/my-application
+branches:
+  "stage":
+    - namespace: stage
+      configs: ["deployment.yml"]
+      replace:
+        "[NODE_ENV]": "stage"

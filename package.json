@@ -1,0 +1,20 @@
+{
+  "name": "kube-tpl-manager",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ktm": "./cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deepmerge": "^4.1.0",
+    "replace-string": "^3.0.0",
+    "termoil": "^1.1.5",
+    "yamljs": "^0.3.0"
+  }
+}
