@@ -62,7 +62,7 @@ KTM.addOption(
 
 
 KTM.on('parsed', function () {
-  const serviceAccount = JSON.parse(fs.readFileSync(this.get('serviceAccountKey')).toString);
+  const serviceAccount = JSON.parse(fs.readFileSync(this.get('serviceAccountKey')).toString());
   // Activate Service Account
   const gcloudAuth = spawnSync('gcloud', [
     'auth', 
