@@ -62,7 +62,10 @@ KTM.addOption(
 
 
 KTM.on('parsed', function () {
-  const serviceAccount = JSON.parse(fs.readFileSync(this.get('serviceAccountKey')).toString());
+  const serviceAccount = JSON.parse(fs.readFileSync(this.get('serviceAccountKey')).toString()); 
+  console.log(serviceAccount);
+  const test = spawnSync('gcloud', ['auth', 'list']);
+  console.log(test.stderr.toString(), test.stdout.toString());
   // Activate Service Account
   const gcloudAuth = spawnSync('gcloud', [
     'auth', 
@@ -140,6 +143,7 @@ KTM.on('parsed', function () {
                 process.stdout.write(util.format('Deployment %s rolled out!', deploymentName));
               } else {
                 process.stderr.write(util.format('Deployment %s failed!', deploymentName));
+                process.exit(1);
               }
             });
           }
