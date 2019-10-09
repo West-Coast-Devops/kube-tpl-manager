@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict'
 
+//override env
+process.env.TIMESTAMP = Date.now();
+
 const util = require('util');
 const path = require('path');
 const fs = require('fs');
